@@ -1,4 +1,6 @@
 const fs = require('fs')
+const chalk = require('chalk')
+const { CLIENT_RENEG_LIMIT } = require('tls')
 
 const getNotes = () => {
     return 'Your notes...'
@@ -38,7 +40,23 @@ const loadNotes = () => {
     }
 }
 
+const removeNote = (title) => {
+    const notes = loadNotes()
+    const notesToKeep = notes.filter((note) => {
+        return note.title !== title
+    })
+
+    if (notes.length > notesToKeep.length) {
+        console.log(chalk.green.inverse('Note is removed'))
+    } else {
+        console.log(chalk.red.inverse('No note found!'))
+    }
+
+    saveNotes(notesToKeep)
+}
+
 module.exports = {
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    removeNote: removeNote
 }
