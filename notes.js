@@ -55,8 +55,18 @@ const removeNote = (title) => {
     saveNotes(notesToKeep)
 }
 
+const listNotes = (title) => {
+    const notes = loadNotes()
+
+    console.log(chalk.inverse('Your notes'))
+    notes.map((note) => {
+        console.log(note.title)
+    })
+}
+
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }
