@@ -73,7 +73,6 @@ const readNote = title => {
 }
 
 module.exports = {
-    getNotes: getNotes,
     addNote: addNote,
     removeNote: removeNote,
     listNotes: listNotes,
